@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="col-md-4 p-0 ml-md-5 pl-md-5 mr-md-3" style="height: 400px;">
-            <img style="width:100%; height: 100%; object-fit: contain;" src="{{ asset('storage/image/'.$post->image) }}">
+            <img src="data:image/png;base64,<?= $post->image ?>" style="width:100%; height: 100%; object-fit: contain;">
         </div>
         <div id="card_buttom" class="col-md-4 p-0 mb-5 mb-md-0">
             <div class="card" style="width:211px; height:100%;">

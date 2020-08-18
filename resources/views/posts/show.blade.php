@@ -9,7 +9,7 @@
 <div class="row border rounded m-5 p-3 p-md-5">
     <!-- 今までのデータ表示 -->
     <div class="col-md-6 my-3 m-md-0 p-0" style="height: 348px;">
-        <img id="show_img" class="border rounded d-flex mx-auto" style="width: 50%; height:100%; object-fit: fill;" src="{{ asset('storage/image/'.$post->image) }}">
+        <img src="data:image/png;base64,<?= $post->image ?>" id="show_img" class="border rounded d-flex mx-auto" style="width: 50%; height:100%; object-fit: fill;">
     </div>
     <div class="col-md-6 border rounded p-3 p-md-5">
         <h4 class="card-title text-center">詳細</h4>

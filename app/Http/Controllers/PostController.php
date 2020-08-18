@@ -44,9 +44,11 @@ class PostController extends Controller
             $post->user_id = $request->user_id;
             $post->opinion = $request->opinion;
 
-            $path = $request->file('image')->store('public/image');
+            // $path = $request->file('image')->store('public/image');
 
-            $post->image = basename($path);
+            $image_binary = base64_encode(file_get_contents($request->image->getRealPath()));
+
+            $post->image = $image_binary;
 
             $post->save();
 
