@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="text-center m-5">消去</h1>
+<h1 class="text-center m-5">Your Posts</h1>
 
 @foreach($user->post as $post)
 <div class="row d-flex justify-content-around border border-info rounded m-5 p-3 p-md-5">

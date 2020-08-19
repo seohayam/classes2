@@ -17,132 +17,63 @@
         <p class="card-text text-center">{{$post->opinion}}</p>
     </div>
 </div>
-    <!-- 質問と回答 -->
-    <div id="qa" class="d-flex justify-content-md-around flex-row m-5">
+<!-- 質問と回答 -->
+<div id="qa" class="d-flex justify-content-md-around flex-row m-5">
 
-        <div class="q border p-5 border-info">
-            <div>
-                <h4 class="card-title text-center">Q</h4>
+    <div class="q border p-5 border-info">
+        <div>
+            <h4 class="card-title text-center">Q</h4>
 
-                <table class="table table-striped text-center border-0 mt-5">
-                    <thead>
-                        <tr>
-                            <th class="border-0" scope="col">質問者</th>
-                            <th class="border-0" scope="col">内容</th>
-                        </tr>
-                    </thead>
-                    @foreach($post->comment as $question)
-                    <tbody>
-                        <tr>
+            <table class="table table-striped text-center border-0 mt-5">
+                <thead>
+                    <tr>
+                        <th class="border-0" scope="col">質問者</th>
+                        <th class="border-0" scope="col">内容</th>
+                    </tr>
+                </thead>
+                @foreach($post->comment as $question)
+                <tbody>
+                    <tr>
                         <td>{{$question->user->name}}</td>
                         <td>{{$question->comment}}</td>
-                        </tr>
-                    </tbody>
-                    @endforeach
-                </table>
-
-            </div>
-
-            <!-- フォーム 質問 -->
-            <div class="mt-5">
-
-                @error('user_id')
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Caution</h4>
-                    <p>{{$message}}</p>
-                </div>
-                @enderror
-
-                @error('user_id')
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Caution</h4>
-                    <p>{{$message}}</p>
-                </div>
-                @enderror
-
-                @error('comment')
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Caution</h4>
-                    <p>{{$message}}</p>
-                </div>
-                @enderror
-                
-            <hr>
-
-                <form action="{{ route('comments.store') }}" method="POST" enctype="multipart/form-data" class="mx-5 mb-5">
-                @csrf
-                <div class="form-group">
-                    <label>質問</label>
-                    <textarea name="comment"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="回答を記入してください"></textarea>
-                </div>
-
-                <input name="user_id" type="hidden" value="{{Auth::id()}}">
-                <input name="post_id" type="hidden" value="{{$post->id}}">
-
-                <div class="text-center">
-                    <input type="submit" class="btn btn-info" value="投稿する">
-                </div>
-
-                </form>
-
-            </div>
+                    </tr>
+                </tbody>
+                @endforeach
+            </table>
 
         </div>
 
-        <div class="a border p-5 border-danger">
+        <!-- フォーム 質問 -->
+        <div class="mt-5">
 
-            <div>
-                    <h4 class="card-title text-center">A</h4>
+            @error('user_id')
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Caution</h4>
+                <p>{{$message}}</p>
+            </div>
+            @enderror
 
-                    <table class="table table-striped text-center border-0 mt-5">
-                        <thead>
-                            <tr>
-                                <th class="border-0" scope="col">回答者</th>
-                                <th class="border-0" scope="col">内容</th>
-                            </tr>
-                        </thead>
-                        @foreach($post->answer as $a)
-                        <tbody>
-                            <tr>
-                                <td>{{$a->user->name}}</td>
-                                <td>{{$a->answer}}</td>
-                            </tr>
-                        </tbody>
-                        @endforeach
-                    </table>
+            @error('user_id')
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Caution</h4>
+                <p>{{$message}}</p>
+            </div>
+            @enderror
 
-                </div>
+            @error('comment')
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Caution</h4>
+                <p>{{$message}}</p>
+            </div>
+            @enderror
 
+            <hr>
 
-            <!-- フォーム　回答 -->
-            <div class="mt-5">
-
-                @error('user_id')
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Caution</h4>
-                    <p>{{$message}}</p>
-                </div>
-                @enderror
-                @error('user_id')
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Caution</h4>
-                    <p>{{$message}}</p>
-                </div>
-                @enderror
-                @error('answer')
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Caution</h4>
-                    <p>{{$message}}</p>
-                </div>
-                @enderror
-
-                <hr>
-
-                <form action="{{ route('answers.store') }}" method="POST" enctype="multipart/form-data" class="mx-5 mb-5">
+            <form action="{{ route('comments.store') }}" method="POST" enctype="multipart/form-data" class="mx-5 mb-5">
                 @csrf
                 <div class="form-group">
-                    <label>回答</label>
-                    <textarea name="answer"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="回答を記入してください"></textarea>
+                    <label>質問</label>
+                    <textarea name="comment" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="回答を記入してください"></textarea>
                 </div>
 
                 <input name="user_id" type="hidden" value="{{Auth::id()}}">
@@ -152,10 +83,79 @@
                     <input type="submit" class="btn btn-info" value="投稿する">
                 </div>
 
-                </form>
+            </form>
 
         </div>
 
     </div>
 
-@endsection
+    <div class="a border p-5 border-danger">
+
+        <div>
+            <h4 class="card-title text-center">A</h4>
+
+            <table class="table table-striped text-center border-0 mt-5">
+                <thead>
+                    <tr>
+                        <th class="border-0" scope="col">回答者</th>
+                        <th class="border-0" scope="col">内容</th>
+                    </tr>
+                </thead>
+                @foreach($post->answer as $a)
+                <tbody>
+                    <tr>
+                        <td>{{$a->user->name}}</td>
+                        <td>{{$a->answer}}</td>
+                    </tr>
+                </tbody>
+                @endforeach
+            </table>
+
+        </div>
+
+
+        <!-- フォーム　回答 -->
+        <div class="mt-5">
+
+            @error('user_id')
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Caution</h4>
+                <p>{{$message}}</p>
+            </div>
+            @enderror
+            @error('user_id')
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Caution</h4>
+                <p>{{$message}}</p>
+            </div>
+            @enderror
+            @error('answer')
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Caution</h4>
+                <p>{{$message}}</p>
+            </div>
+            @enderror
+
+            <hr>
+
+            <form action="{{ route('answers.store') }}" method="POST" enctype="multipart/form-data" class="mx-5 mb-5">
+                @csrf
+                <div class="form-group">
+                    <label>回答</label>
+                    <textarea name="answer" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="回答を記入してください"></textarea>
+                </div>
+
+                <input name="user_id" type="hidden" value="{{Auth::id()}}">
+                <input name="post_id" type="hidden" value="{{$post->id}}">
+
+                <div class="text-center">
+                    <input type="submit" class="btn btn-info" value="投稿する">
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    @endsection

@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="m-5 text-center">
-    <h1>投稿画面</h1>
+    <h1>投稿</h1>
 </div>
 <!-- エラー -->
 @if(count($errors) > 0)
@@ -29,6 +29,7 @@
         <label>詳細</label>
         <input name="opinion" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="例：〜学部　〜専攻　〜年　お気にりの授業：">
     </div>
+    <hr>
 
     <div class="form-group d-flex flex-column flex-md-row mt-5">
         <div class="mr-md-5">
@@ -37,13 +38,13 @@
         <div>
             <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
         </div>
-
     </div>
+    <hr>
 
     <input name="user_id" type="hidden" value="{{Auth::id()}}">
 
     <div class="text-center">
-        <input type="submit" class="btn btn-info mt-5" value="投稿する">
+        <input type="submit" class="btn btn-info mt-3 px-5" value="投稿する">
     </div>
 
     </form>

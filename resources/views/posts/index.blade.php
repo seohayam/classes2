@@ -8,35 +8,34 @@
 </div>
 
 <!-- 説明 -->
-<div id="explain_btn" class="border-bottom d-flex align-items-center d-flex justify-content-center" style="height: 300px;">
+<div id="explain_btn" class="d-flex align-items-center d-flex justify-content-center my-md-5" style="height: 100px;">
     <div class="text-center">
-        <h2>説明</h2>
-        <a class="btn btn-dark mt-5 px-5 py-3" href="{{ route('posts.explain') }}">説明を読む</a>
+        <a class="btn btn-outline-secondary px-md-5 py-md-3" href="{{ route('posts.explain') }}">説明を読む</a>
     </div>
 </div>
+<hr class="m-0">
 
 <!-- 投稿orログインボタン -->
-<div id="post_btn" class="border-bottom d-flex align-items-center d-flex justify-content-center" style="height: 300px;">
+<div id="post_btn" class="d-flex align-items-center d-flex justify-content-center my-md-5" style="height: 100px;">
     @guest
     <div>
-        <h2 class="text-center">ログイン or 新規登録</h2>
-        <div class="text-center mt-5">
-            <a class="btn btn-dark px-md-5 py-md-3 mx-3" href="{{ route('login') }}">{{ __('Login') }}</a>
-            <a class="btn btn-dark px-md-5 py-md-3 mx-3" href="{{ route('register') }}">{{ __('Register') }}</a>
+        <div class="text-center">
+            <a class="btn btn-outline-secondary px-md-5 py-md-3 mx-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+            <a class="btn btn-outline-secondary px-md-5 py-md-3 mx-3" href="{{ route('register') }}">{{ __('Register') }}</a>
         </div>
     </div>
     @else
     <div class="text-center">
-        <h2>投稿</h2>
-        <a class="btn btn-dark mt-5 px-5 py-3" href="{{ route('posts.create') }}">投稿する</a>
-        <a class="btn btn-dark mt-5 px-5 py-3" href="{{ route('posts.edit', Auth::id() ) }}">Your Posts</a>        
+        <a class="btn btn btn-outline-secondary px-md-5 py-md-3" href="{{ route('posts.create') }}">投稿する</a>
+        <a class="btn btn-outline-secondary px-md-5 py-md-3" href="{{ route('posts.edit', Auth::id() ) }}">Your Posts</a>        
     </div>
     @endguest
 </div>
+<hr class="m-0 mb-5">
 
 <!-- 時間割一覧 -->
-<div class="text-center my-5 p-5">
-    <a style="text-decoration: none;" href="{{ route('posts.index') }}"><h1 id="classes">Classes（時間割一覧）</h1></a>
+<div class="text-center">
+    <a style="text-decoration: none;" href="{{ route('posts.index') }}"><h1 id="classes" class="text-dark">Classes（時間割一覧）</h1></a>
 </div>
 
 
