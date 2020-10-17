@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -42,13 +43,17 @@ class PostController extends Controller
         if($request->file('image')->isValid()){
 
             $post->user_id = $request->user_id;
-            $post->opinion = $request->opinion;
+            $post->major = $request->major;
+            $post->grade = $request->grade;
+            $post->recomend = $request->recomend;
 
-            // $path = $request->file('image')->store('public/image');
+            // 練習用
+            $path = $request->file('image')->store('public/image');
+            $post->image = basename($path);
 
-            $image_binary = base64_encode(file_get_contents($request->image->getRealPath()));
-
-            $post->image = $image_binary;
+            // 本番用
+            // $image_binary = base64_encode(file_get_contents($request->image->getRealPath()));
+            // $post->image = $image_binary;
 
             $post->save();
 
@@ -108,7 +113,7 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $results_post = Post::where('opinion', 'like', "%{$request->search}%")->paginate('2');
+        $results_post = Post::where('major','like', "%{$request->search}%")->paginate('2');
         // $results_user = User::where('name', 'like', "%{$request->search}%")->paginate('2');
 
         $count_result = '検索結果（投稿者名　'.count($results_post).'件）';

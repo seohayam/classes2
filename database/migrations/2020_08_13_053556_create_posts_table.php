@@ -16,9 +16,12 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->index();
 
-            $table->string('opinion')->nullable();
+            $table->string('major')->nullable();
+            $table->string('grade')->nullable();
+            $table->string('recomend')->nullable();
+            
             $table->text('image')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

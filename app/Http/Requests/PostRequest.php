@@ -25,7 +25,9 @@ class PostRequest extends FormRequest
     {
         return [
             'user_id' => 'required|numeric',
-            'opinion' => 'required',
+            'major' => 'required',
+            'grade' => 'required',
+            'recomend' => 'required',
             'image' => 'required|file|image',
         ];
     }
@@ -34,7 +36,9 @@ class PostRequest extends FormRequest
     {
         return [
             'user_id.required' => 'エラーが発生しました！',
-            'opinion.required' => '意見を入力してください！',
+            'major.required' => '学部を入れて',
+            'grade.required' => '学年を入れて',
+            'recomend.required' => 'おすすめの授業を入れて',
             'image.required' => '画像を選択してください',
         ];
     }

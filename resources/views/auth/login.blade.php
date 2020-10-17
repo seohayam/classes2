@@ -4,7 +4,7 @@
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card bg-dark">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -45,7 +45,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('次回から自動でログインする') }}
                                     </label>
                                 </div>
                             </div>
@@ -53,15 +53,22 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="login-btn" type="submit" class="btn" style="background-color:#b53353; color:beige">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                    <a class="btn" style="color:beige" href="{{ route('password.request') }}">
+                                        {{ __('パスワードをお忘れですか？') }}
                                     </a>
                                 @endif
+                            </div>
+                            <hr>
+                            <div class="col-md-8 offset-md-4 text-center text-md-left pl-md-5 py-md-3">
+                                <p>or</p>
+                            </div>
+                            <div class="col-md-8 offset-md-4 text-center text-md-left">
+                                <a class="btn btn-secondary" href="/login/github"><i class="fab fa-github fa-3x"></i>github</a>
                             </div>
                         </div>
                     </form>

@@ -2,92 +2,82 @@
 
 @section('content')
 
-<!-- 初期画面 -->
-<div>
-    <img style="width:100%;" src="{{ asset('/img/classes.png') }}">
-</div>
+<!-- 練習 -->
 
-<!-- 説明 -->
-<div id="explain_btn" class="d-flex align-items-center d-flex justify-content-center my-md-5" style="height: 100px;">
-    <div class="text-center">
-        <a class="btn btn-outline-secondary px-md-5 py-md-3" href="{{ route('posts.explain') }}">説明を読む</a>
-    </div>
-</div>
-<hr class="m-0">
-
-<!-- 投稿orログインボタン -->
-<div id="post_btn" class="d-flex align-items-center d-flex justify-content-center my-md-5" style="height: 100px;">
-    @guest
-    <div>
-        <div class="text-center">
-            <a class="btn btn-outline-secondary px-md-5 py-md-3 mx-3" href="{{ route('login') }}">{{ __('Login') }}</a>
-            <a class="btn btn-outline-secondary px-md-5 py-md-3 mx-3" href="{{ route('register') }}">{{ __('Register') }}</a>
-        </div>
-    </div>
-    @else
-    <div class="text-center">
-        <a class="btn btn btn-outline-secondary px-md-5 py-md-3" href="{{ route('posts.create') }}">投稿する</a>
-        <a class="btn btn-outline-secondary px-md-5 py-md-3" href="{{ route('posts.edit', Auth::id() ) }}">Your Posts</a>        
-    </div>
-    @endguest
-</div>
-<hr class="m-0 mb-5">
-
-<!-- 時間割一覧 -->
-<div class="text-center">
-    <a style="text-decoration: none;" href="{{ route('posts.index') }}"><h1 id="classes" class="text-dark">Classes（時間割一覧）</h1></a>
-</div>
 
 
 <!-- 検索ホーム -->
-<div class="py-4">
-    <div class="my-5 container h-100">
+<div class="py-4 bg-color">
+    <div class="my-5 d-flex direction-row align-items-center justify-content-md-center h-100">
+        <i class="fas fa-search fa-3x mx-4" style="color: white;"></i>
         <div class="d-flex justify-content-center h-100">
-            <form action="{{ route('posts.search') }}" method="get">
+            <form id="search-form" action="{{ route('posts.search') }}" method="get">
                 <div class="searchbar">
-                    <input id="search" class="search_input" type="text" name="search" placeholder="学年や専攻を検索">                    
+                    <input id="search" class="search_input" type="text" name="search" placeholder="学年や専攻を検索">
                     <input id="search_btn" type="submit" value="search" class="search_icon">
-                    <i class="fas fa-search"></i>
                 </div>
             </form>
         </div>
     </div>
-    <div class="text-center">
-    @if(isset($count_result))
-        <h3>{{$count_result}}</h3>
-    @endif
+    <div id="search-result" class="text-center">
+        @if(isset($count_result))
+        <h3 class="text-white">{{$count_result}}</h3>
+        @endif
     </div>
 </div>
 
-
+<!-- 一覧表示 -->
 @foreach($posts as $post)
+<!-- name = <h3>{{$post->user->name}}</h3>
+<a class="btn border border-dark mx-2" href="{{ route('posts.show', $post->id) }}">詳細</a>
+<img class="style" style="width:100%; filter: drop-shadow(0 0 10px black);　object-fit: contain;" src=" {{ asset('storage/image/'.$post->image) }}">
+-->
+<!-- <img src="data:image/png;base64,<?= $post->image ?>" class="style" style="filter: drop-shadow(0 0 10px black);　object-fit: contain;"> -->
+<!-- <p>学部：{{$post->major}}</p>
+<p>学年：{{$post->grade}}</p>
+<p>お勧め：{{$post->recomend}}</p>
+-->
 
-<div class="p-5 m-5 border rounded-pill">
-    <div class="row">
+<div id="over-roll">
+    <div id="post" class="text-light">
 
-        <div class="col-md-2 mx-md-5 my-5 my-md-0 d-flex align-items-center">
-            <div class="border rounded-pill text-center" style="width: 100%">
-                <h3 class="m-0 py-3">{{$post->user->name}}</h3>
+        <div id="space" class="sub-bg-color"></div>
+
+        <div id="name" class="d-flex direction-row justify-content-around align-items-center" style="height: 100px;">
+            <h3>{{$post->user->name}}</h3>
+            <div>
+                <a href="{{ route('posts.show', $post->id) }}">
+                    <i class="far fa-comment-dots fa-2x"></i>
+                    <p class="m-0">質問</p>
+                </a>
             </div>
         </div>
-        <div class="col-md-4 p-0 ml-md-5 pl-md-5 mr-md-3" style="height: 400px;">
-            <img src="data:image/png;base64,<?= $post->image ?>" style="width:100%; height: 100%; object-fit: contain;">
-        </div>
-        <div id="card_buttom" class="col-md-4 p-0 mb-5 mb-md-0">
-            <div class="card" style="width:211px; height:100%;">
-                <div class="card-body">
-                    <h4 class="card-title text-center">
-                        <a id="detail_btn" href="{{ route('posts.show', $post->id) }}" class="btn border border-info mt-5 m-md-0 px-5 py-3">詳細</a> 
-                    </h4>
-                    <hr class="my-md-3">
-                    <p class="card-text text-center">{{$post->opinion}}</p>
-                </div>
+
+        @if(!$post->image)
+            <div id="image" class="d-flex justify-content-center align-items-center border" style="height: 200px;">
+                <i class="fas fa-images fa-5x"></i>
+            </div>
+        @else
+            <div>
+                <img style="width:100%; object-fit: contain;" src=" {{ asset('storage/image/'.$post->image) }}">
+            </div>
+        @endif
+
+
+        <div id="info" class="d-flex justify-content-center py-4">
+            <div class="border border-top-0 rounded-bottom border-secondary px-5 py-3">
+                <h3>学部</h3>
+                <p>{{$post->major}}</p>
+                <h3>学年</h3>
+                <p>{{$post->grade}}</p>
+                <h3>お勧めの授業</h3>
+                <p>{{$post->recomend}}</p>
             </div>
         </div>
-    </div>
 
     </div>
 </div>
 @endforeach
+
 
 @endsection

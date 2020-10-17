@@ -12,7 +12,13 @@
     @error('user_id')
         <p>{{$message}}</p>
     @enderror
-    @error('opinion')
+    @error('major')
+        <p>{{$message}}</p>
+    @enderror
+    @error('grade')
+        <p>{{$message}}</p>
+    @enderror
+    @error('recomend')
         <p>{{$message}}</p>
     @enderror
     @error('image')
@@ -22,31 +28,39 @@
 @endif
 
 <!-- フォーム -->
-<div class="p-5">
+<div class="">
     <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="mx-5 mb-5">
     @csrf
     <div class="form-group">
-        <label>詳細</label>
-        <input name="opinion" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="例：〜学部　〜専攻　〜年　お気にりの授業：">
+        <hr>
+        <label>学部</label>
+            <input name="major" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="例：外国語学部">    
+        <hr>
+        <label>学年</label>
+            <input name="grade" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="例：2年">
+        <hr>
+        <label>お勧めの授業</label>
+            <input name="recomend" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="例：英米文学の授業">
+        <hr>
     </div>
-    <hr>
 
-    <div class="form-group d-flex flex-column flex-md-row mt-5">
+    <div class="form-group d-flex flex-column flex-md-row mt-5 text-center">
         <div class="mr-md-5">
             <label for="exampleFormControlFile1">あなたの時間割（画像）</label>
         </div>
-        <div>
-            <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+        <div class="text-center text-md-left btn">
+            <label>
+                <i class="far fa-file fa-5x bg-dark rounded p-1"></i>
+                <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1" style="visibility: hidden;">
+            </label>
         </div>
     </div>
-    <hr>
-
-    <input name="user_id" type="hidden" value="{{Auth::id()}}">
-
+    
     <div class="text-center">
-        <input type="submit" class="btn btn-info mt-3 px-5" value="投稿する">
+        <h5>投稿する</h5>
+        <button class="btn btn-secondary" type="submit"><i class="far fa-plus fa-3x"></i></button>
     </div>
-
+        <input type="hidden" name="user_id" value="{{Auth::id()}}">
     </form>
 </div>
 

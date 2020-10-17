@@ -16,6 +16,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -23,52 +26,60 @@
     <div id="app">
         <nav id="origin_nav" class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/posts') }}">
-                    Classes
+<!-- always exsits -->
+            <div class="d-flex direction-row align-items-center mb-3">
+                <a class="navbar-brand logo-size mr-md-3" href="{{ url('/posts') }}">
+                    <img id="logo" class="border rounded-circle" src="{{ asset('/storage/image/CLASSE.png') }}">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                @if(Auth::user())
+                <h2 class="m-0 text-center">wellcome {{ Auth::user()->name}}</h2>
+                @else
+                    <h2 class="m-0">wellcome</h2>
+                @endif
+            </div>
+<!-- icons -->
+            <div id="icons" style="width: 100%;" class="d-flex justify-content-around">
+                <a class="navbar-brand text-center m-0" href="{{ url('/posts') }}">
+                    <i class="fas fa-home fa-2x"></i>
+                    <p class="font-small">HOME</p>
+                </a>
+                <a class="navbar-brand text-center m-0" href="{{ route('posts.explain') }}">
+                    <i class="fas fa-info-circle fa-2x"></i>
+                    <p class="font-small">説明</p>
+                </a>
+              
+            @guest
+                <a class="navbar-brand text-center m-0" href="{{ route('login') }}">
+                    <i class="fas fa-sign-in-alt fa-2x"></i>
+                    <p class="font-small">ログイン</p>
+                </a>
+                @if (Route::has('register'))
+                <a class="navbar-brand text-center m-0" href="{{ route('register') }}">
+                    <i class="fas fa-user-plus fa-2x"></i>
+                    <p class="font-small">登録</p>
+                </a>
+                @endif
+            @else
+                <a class="navbar-brand text-center m-0" href="{{ route('posts.create') }}">
+                    <i class="fas fa-plus-circle fa-2x"></i>
+                    <p class="font-small">投稿</p>
+                </a>
+                <a class="navbar-brand text-center m-0" href="{{ route('posts.edit', Auth::id() ) }}">
+                    <i class="fas fa-camera fa-2x"></i>
+                    <p class="font-small">Your Posts</p>
+                </a>
+                <!-- ログアウト -->
+                <a class="navbar-brand text-center m-0" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt fa-2x"></i>
+                    <p class="font-small">ログアウト</p>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                </form>                             
+            @endguest
+            </div>
             </div>
         </nav>
 
