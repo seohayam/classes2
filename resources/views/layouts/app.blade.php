@@ -29,7 +29,8 @@
 <!-- always exsits -->
             <div class="d-flex direction-row align-items-center mb-3">
                 <a class="navbar-brand logo-size mr-md-3" href="{{ url('/posts') }}">
-                    <img id="logo" class="border rounded-circle" src="{{ asset('/storage/image/CLASSE.png') }}">
+                    <img id="logo" class="border rounded-circle" src="{{ asset('public/img/CLASSE.png') }}">
+                    <!-- <img id="logo" class="border rounded-circle" src="{{ asset('/storage/image/CLASSE.png') }}"> -->
                 </a>
                 @if(Auth::user())
                 <h2 class="m-0 text-center">wellcome {{ Auth::user()->name}}</h2>

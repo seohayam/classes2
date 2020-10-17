@@ -29,7 +29,8 @@
             </div>
         @else
             <div>
-                <img style="width:100%; object-fit: contain;" src=" {{ asset('storage/image/'.$post->image) }}">
+                <img src="data:image/png;base64,<?= $post->image ?>" style="width:100%; object-fit: contain;">
+                <!-- <img style="width:100%; object-fit: contain;" src=" {{ asset('storage/image/'.$post->image) }}"> -->
             </div>
         @endif
 
