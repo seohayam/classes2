@@ -7,7 +7,7 @@
 
 
 <!-- 検索ホーム -->
-<div class="py-4 bg-color">
+<div class="py-4">
     <div class="my-5 d-flex direction-row align-items-center justify-content-md-center h-100">
         <i class="fas fa-search fa-3x mx-4" style="color: white;"></i>
         <div class="d-flex justify-content-center h-100">
