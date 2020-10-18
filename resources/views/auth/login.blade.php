@@ -63,13 +63,14 @@
                                     </a>
                                 @endif
                             </div>
-                            <hr>
-                            <div class="col-md-8 offset-md-4 text-center text-md-left pl-md-5 py-md-3">
+<!-- ==================socialite========================= -->
+                            <!-- <div class="col-md-8 offset-md-4 text-center text-md-left pl-md-5 py-md-3">
                                 <p>or</p>
-                            </div>
-                            <div class="col-md-8 offset-md-4 text-center text-md-left">
+                            </div> -->
+                            <!-- <div class="col-md-8 offset-md-4 text-center text-md-left">
                                 <a class="btn btn-secondary" href="{{ url('login/github') }}"><i class="fab fa-github fa-3x"></i>github</a>
-                            </div>
+                            </div> -->
+<!-- ====================socialite========================= -->
                         </div>
                     </form>
                 </div>

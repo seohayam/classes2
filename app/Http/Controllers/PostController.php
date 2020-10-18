@@ -113,7 +113,10 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $results_post = Post::where('major','like', "%{$request->search}%")->paginate('2');
+        $results_post = Post::where('major','like', "%{$request->search}%")
+                            ->orWhere('grade','like', "%{$request->search}%")
+                            ->orWhere('recomend','like', "%{$request->search}%")
+                            ->paginate('2');
         // $results_user = User::where('name', 'like', "%{$request->search}%")->paginate('2');
 
         $count_result = '検索結果（投稿者名　'.count($results_post).'件）';
