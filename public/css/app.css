@@ -86,7 +86,6 @@ div {
     margin-bottom: auto;
     margin-top: auto;
     height: 60px;
-    background-color: #cbc698;
     border-radius: 30px;
     padding: 10px;
 }
@@ -103,7 +102,10 @@ div {
 }
 
 .searchbar:hover > .search_input {
+    background-color: #cbc698;
     padding: 0 10px;
+    margin: 0 10px;
+    border-radius: 10px;
     width: 450px;
     caret-color: red;
     transition: width 0.4s linear;
