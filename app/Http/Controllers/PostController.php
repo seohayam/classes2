@@ -48,12 +48,12 @@ class PostController extends Controller
             $post->recomend = $request->recomend;
 
             // 練習用
-            $path = $request->file('image')->store('public/image');
-            $post->image = basename($path);
+            // $path = $request->file('image')->store('public/image');
+            // $post->image = basename($path);
 
             // 本番用
-            // $image_binary = base64_encode(file_get_contents($request->image->getRealPath()));
-            // $post->image = $image_binary;
+            $image_binary = base64_encode(file_get_contents($request->image->getRealPath()));
+            $post->image = $image_binary;
 
             $post->save();
 

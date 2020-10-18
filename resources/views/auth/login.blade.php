@@ -68,7 +68,7 @@
                                 <p>or</p>
                             </div>
                             <div class="col-md-8 offset-md-4 text-center text-md-left">
-                                <a class="btn btn-secondary" href="/login/github"><i class="fab fa-github fa-3x"></i>github</a>
+                                <a class="btn btn-secondary" href="{{ url('login/github') }}"><i class="fab fa-github fa-3x"></i>github</a>
                             </div>
                         </div>
                     </form>
