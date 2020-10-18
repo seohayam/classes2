@@ -13,7 +13,7 @@
         <div class="d-flex justify-content-center h-100">
             <form id="search-form" action="{{ route('posts.search') }}" method="get">
                 <div class="searchbar">
-                    <input id="search" style="background-color: #cbc698 !important;" class="search_input" type="text" name="search" placeholder="学年や専攻を検索">
+                    <input id="search" style="background-color: #cbc698 !important; margin: 0 10px !important; border-radius: 10px !important;" class="search_input" type="text" name="search" placeholder="学年や専攻を検索">
                     <input id="search_btn" type="submit" value="search" class="search_icon">
                 </div>
             </form>
