@@ -64,7 +64,7 @@
                     <i class="fas fa-plus-circle fa-2x"></i>
                     <p class="font-small">投稿</p>
                 </a>
-                <a class="navbar-brand text-center m-0" href="{{ route('posts.edit', Auth::id() ) }}">
+                <a class="navbar-brand text-center m-0" href="{{ route('users.show', Auth::id() ) }}">
                     <i class="fas fa-camera fa-2x"></i>
                     <p class="font-small">Your Posts</p>
                 </a>

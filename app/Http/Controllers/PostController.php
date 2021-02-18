@@ -82,10 +82,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $user = User::with('post')->find($id);
-
-        return view('posts.delete', ['user' => $user]);
+    {       
     }
 
     /**
