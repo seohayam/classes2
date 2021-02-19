@@ -14,11 +14,11 @@
         <div id="name" class="d-flex direction-row justify-content-around align-items-center" style="height: 100px;">
             <h3>{{$post->user->name}}</h3>
             <div>
-                <form action="{{ route('posts.delete') }}" method="POST">
+                <form name="trash" action="{{ route('posts.delete') }}" method="POST">
                     @csrf
                     <input type="hidden" name="post_id" value="{{$post->id}}">
                     <input type="hidden" name="user_id" value="{{$post->user->id}}">
-                    <button style="width:100px;" class="btn btn-secondary" type="submit"><i class="far fa-trash-alt"></i></button>
+                    <button style="width:100px;" class="btn btn-secondary" type="submit" onClick="dleteConf()"><i class="far fa-trash-alt"></i></button>
                 </form>
             </div>
         </div>

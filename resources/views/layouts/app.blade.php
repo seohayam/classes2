@@ -87,5 +87,15 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        const dleteConf = () => {        
+            if(!window.confirm('本当に削除しますか？')){
+                window.alert('キャンセルされました'); 
+                return false;
+            }
+                document.trash.submit();
+                alert("消去完了しました");
+        };
+    </script>
 </body>
 </html>

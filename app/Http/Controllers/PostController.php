@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request, Post $post)
     {
-        if($request->file('image')->isValid()){
+        if($request->file('image')->isValid()){                   
 
             $post->user_id = $request->user_id;
             $post->major = $request->major;
@@ -54,7 +54,7 @@ class PostController extends Controller
             // 本番用
             $image_binary = base64_encode(file_get_contents($request->image->getRealPath()));
             $post->image = $image_binary;
-
+            
             $post->save();
 
         }
@@ -82,7 +82,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {       
+    {
+
     }
 
     /**
